@@ -17,9 +17,19 @@ struct ContentView: View {
             List {
                 ForEach(items) { item in
                     NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
+                        VStack{
+                            Image(uiImage: UIImage(data:item.image!)!)
+                                .resizable()
+                                .scaledToFit()
+                            Text("Item at \(item.timestamp!, format: Date.FormatStyle(date: .numeric, time: .standard))")
+                        }
                     } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+                        HStack{
+                            Image(uiImage: UIImage(data:item.thumbnail!)!)
+                                .resizable()
+                                .frame(width: 100, height: 100)
+                            Text("Item at \(item.timestamp!, format: Date.FormatStyle(date: .numeric, time: .standard))")
+                        }
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -34,6 +44,7 @@ struct ContentView: View {
                     }
                 }
             }
+            .navigationTitle("\(items.count) Items") // SET A BREAKPOINT HERE TO SEE IOS 18 BUG WHERE CALLING .COUNT LOADS ALL ITEMS
         } detail: {
             Text("Select an item")
         }
@@ -41,7 +52,7 @@ struct ContentView: View {
 
     private func addItem() {
         withAnimation {
-            let newItem = Item(timestamp: Date())
+            let newItem = Item(timestamp: Date(), image:UIImage(named: "image\(Int.random(in: 1...3))")!)
             modelContext.insert(newItem)
         }
     }

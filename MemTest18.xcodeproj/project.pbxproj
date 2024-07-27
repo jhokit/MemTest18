@@ -12,6 +12,7 @@
 		7272E7F22C55A7E300707C3A /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7272E7F12C55A7E300707C3A /* Item.swift */; };
 		7272E7F42C55A7E400707C3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7272E7F32C55A7E400707C3A /* Assets.xcassets */; };
 		7272E7F72C55A7E400707C3A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7272E7F62C55A7E400707C3A /* Preview Assets.xcassets */; };
+		7272E8002C55B71300707C3A /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7272E7FF2C55B71300707C3A /* Folder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,9 @@
 		7272E7F12C55A7E300707C3A /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		7272E7F32C55A7E400707C3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7272E7F62C55A7E400707C3A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7272E7FD2C55AFF800707C3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		7272E7FE2C55B00B00707C3A /* MemTest18.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MemTest18.entitlements; sourceTree = "<group>"; };
+		7272E7FF2C55B71300707C3A /* Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,9 +57,12 @@
 		7272E7EC2C55A7E300707C3A /* MemTest18 */ = {
 			isa = PBXGroup;
 			children = (
+				7272E7FE2C55B00B00707C3A /* MemTest18.entitlements */,
+				7272E7FD2C55AFF800707C3A /* Info.plist */,
 				7272E7ED2C55A7E300707C3A /* MemTest18App.swift */,
 				7272E7EF2C55A7E300707C3A /* ContentView.swift */,
 				7272E7F12C55A7E300707C3A /* Item.swift */,
+				7272E7FF2C55B71300707C3A /* Folder.swift */,
 				7272E7F32C55A7E400707C3A /* Assets.xcassets */,
 				7272E7F52C55A7E400707C3A /* Preview Content */,
 			);
@@ -143,6 +150,7 @@
 				7272E7F02C55A7E300707C3A /* ContentView.swift in Sources */,
 				7272E7F22C55A7E300707C3A /* Item.swift in Sources */,
 				7272E7EE2C55A7E300707C3A /* MemTest18App.swift in Sources */,
+				7272E8002C55B71300707C3A /* Folder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,12 +281,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MemTest18/MemTest18.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MemTest18/Preview Content\"";
 				DEVELOPMENT_TEAM = GAU3F6PUXE;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MemTest18/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -302,12 +312,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MemTest18/MemTest18.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"MemTest18/Preview Content\"";
 				DEVELOPMENT_TEAM = GAU3F6PUXE;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MemTest18/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
