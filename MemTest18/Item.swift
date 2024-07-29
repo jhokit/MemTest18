@@ -11,6 +11,7 @@ import UIKit
 
 @Model
 final class Item {
+    var uuid:String = UUID().uuidString // handy uuID
     var timestamp: Date?
     @Attribute(.externalStorage) var image:Data?   // jpeg image data
     @Attribute(.externalStorage) var thumbnail:Data? // jpeg thumbnail data

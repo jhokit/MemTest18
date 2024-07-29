@@ -7,12 +7,13 @@
 
 import Foundation
 import SwiftData
+import SwiftUI
 
 @Model final class Folder {
-    
+
+    public var uuid:String = UUID().uuidString // handy uuID
     var name:String = "Untitled"
-    @Transient var iconName:String = "folder"
-    
+
     // array of Items
     @Relationship(deleteRule: .nullify, inverse: \Item.folder) var items: [Item]?
     
@@ -20,4 +21,6 @@ import SwiftData
         self.name = name
     }
 
+
 }
+

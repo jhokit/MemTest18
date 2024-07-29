@@ -13,18 +13,24 @@
 		7272E7F42C55A7E400707C3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7272E7F32C55A7E400707C3A /* Assets.xcassets */; };
 		7272E7F72C55A7E400707C3A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7272E7F62C55A7E400707C3A /* Preview Assets.xcassets */; };
 		7272E8002C55B71300707C3A /* Folder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7272E7FF2C55B71300707C3A /* Folder.swift */; };
+		7272E8022C55BA0E00707C3A /* FolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7272E8012C55BA0E00707C3A /* FolderView.swift */; };
+		7272E8042C55BA1A00707C3A /* ItemListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7272E8032C55BA1A00707C3A /* ItemListView.swift */; };
+		7272E8062C55BA2600707C3A /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7272E8052C55BA2600707C3A /* ItemDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7272E7EA2C55A7E300707C3A /* MemTest18.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemTest18.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7272E7ED2C55A7E300707C3A /* MemTest18App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemTest18App.swift; sourceTree = "<group>"; };
-		7272E7EF2C55A7E300707C3A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		7272E7EF2C55A7E300707C3A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		7272E7F12C55A7E300707C3A /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		7272E7F32C55A7E400707C3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7272E7F62C55A7E400707C3A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7272E7FD2C55AFF800707C3A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7272E7FE2C55B00B00707C3A /* MemTest18.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MemTest18.entitlements; sourceTree = "<group>"; };
 		7272E7FF2C55B71300707C3A /* Folder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Folder.swift; sourceTree = "<group>"; };
+		7272E8012C55BA0E00707C3A /* FolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderView.swift; sourceTree = "<group>"; };
+		7272E8032C55BA1A00707C3A /* ItemListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListView.swift; sourceTree = "<group>"; };
+		7272E8052C55BA2600707C3A /* ItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +69,9 @@
 				7272E7EF2C55A7E300707C3A /* ContentView.swift */,
 				7272E7F12C55A7E300707C3A /* Item.swift */,
 				7272E7FF2C55B71300707C3A /* Folder.swift */,
+				7272E8012C55BA0E00707C3A /* FolderView.swift */,
+				7272E8032C55BA1A00707C3A /* ItemListView.swift */,
+				7272E8052C55BA2600707C3A /* ItemDetailView.swift */,
 				7272E7F32C55A7E400707C3A /* Assets.xcassets */,
 				7272E7F52C55A7E400707C3A /* Preview Content */,
 			);
@@ -147,6 +156,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7272E8022C55BA0E00707C3A /* FolderView.swift in Sources */,
+				7272E8042C55BA1A00707C3A /* ItemListView.swift in Sources */,
+				7272E8062C55BA2600707C3A /* ItemDetailView.swift in Sources */,
 				7272E7F02C55A7E300707C3A /* ContentView.swift in Sources */,
 				7272E7F22C55A7E300707C3A /* Item.swift in Sources */,
 				7272E7EE2C55A7E300707C3A /* MemTest18App.swift in Sources */,
