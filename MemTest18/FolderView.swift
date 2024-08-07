@@ -15,6 +15,7 @@ struct FolderView: View {
     @Binding var selection:Folder?
     @State private var isShowingNewFolderAlert = false
     @State private var newFolderName = ""
+    
     @Environment(\.modelContext) private var modelContext
 
     var body: some View {
@@ -33,30 +34,13 @@ struct FolderView: View {
             NewFolderToolbarItem(placement: .primaryAction)
             PopulateToolbarItem(placement: .automatic)
         }
-        .alert("New Folder", isPresented: $isShowingNewFolderAlert) {
-            TextField("Name", text: $newFolderName)
-            
-            Button("Save") {createFolder()}
-            // .disabled(newFolderName.isEmpty) // a bug in Button with disabled causes the action to not be called if the initial state is true
-            Button("Cancel", role: .cancel) { }
-        } message: {
-            Text("Enter a name for the new folder.")
-        }
-        
-
     }
     
-    
-    func createFolder() {
-        let folder = Folder(name: newFolderName)
-        modelContext.insert(folder)
-        newFolderName = ""
-    }
     
    func createFolder(named:String)->Folder {
         let folder = Folder(name: named)
         modelContext.insert(folder)
-       return folder
+        return folder
     }
     
     
@@ -74,7 +58,7 @@ struct FolderView: View {
                 for _ in 1...2
                 {
                    let newFolder = createFolder(named:"Test\(Int.random(in: 1...1000))")
-                   for _ in 1...10 {
+                   for _ in 1...20 {
                        let newItem = Item(timestamp: Date(), image:UIImage(named: "image\(Int.random(in: 1...3))")!)
                        modelContext.insert(newItem)
                        newFolder.items?.append(newItem)
@@ -83,7 +67,7 @@ struct FolderView: View {
 
             })
             {
-                Text("Populate")
+                Text("Add 40 Items")
             }
         }
     }

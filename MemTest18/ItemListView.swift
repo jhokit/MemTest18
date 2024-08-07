@@ -12,41 +12,42 @@ struct ItemListView: View {
     @Environment(\.modelContext) private var modelContext
     var folder:Folder?
 
-
     var body: some View {
-        List {
-            if let items = folder?.items{
-                ForEach(items) { item in
-                    NavigationLink {
-                        VStack{
-                            Image(uiImage: UIImage(data:item.image!)!)
-                                .resizable()
-                                .scaledToFit()
-                            Text("Item at \(item.timestamp!, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                        }
-                    } label: {
-                        HStack{
-                            Image(uiImage: UIImage(data:item.thumbnail!)!)
-                                .resizable()
-                                .frame(width: 100, height: 100)
-                            Text("Item at \(item.timestamp!, format: Date.FormatStyle(date: .numeric, time: .standard))")
+        NavigationStack{
+            List {
+                if let items = folder?.items{
+                    ForEach(items) { item in
+                        NavigationLink {
+                            VStack{
+                                Image(uiImage: UIImage(data:item.image!)!)
+                                    .resizable()
+                                    .scaledToFit()
+                                Text("Item at \(item.timestamp!, format: Date.FormatStyle(date: .numeric, time: .standard))")
+                            }
+                        } label: {
+                            HStack{
+                                Image(uiImage: UIImage(data:item.thumbnail!)!)
+                                    .resizable()
+                                    .frame(width: 100, height: 100)
+                                Text("Item at \(item.timestamp!, format: Date.FormatStyle(date: .numeric, time: .standard))")
+                            }
                         }
                     }
-                }
-                .onDelete(perform: deleteItems)
-            }
-        }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                EditButton()
-            }
-            ToolbarItem {
-                Button(action: addItem) {
-                    Label("Add Item", systemImage: "plus")
+                    .onDelete(perform: deleteItems)
                 }
             }
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    EditButton()
+                }
+                ToolbarItem {
+                    Button(action: addItem) {
+                        Label("Add Item", systemImage: "plus")
+                    }
+                }
+            }
+            .navigationTitle(folder?.name ?? "unknown")
         }
-        .navigationTitle("\(folder?.items?.count ?? 0) Items") // SET A BREAKPOINT HERE TO SEE IOS 18 BUG WHERE CALLING .COUNT LOADS ALL ITEMS
     }
     
     private func addItem() {
