@@ -46,7 +46,7 @@ struct ItemListView: View {
                     }
                 }
             }
-            .navigationTitle(folder?.name ?? "unknown")
+            .navigationTitle(folder?.name ?? "No Selection")
         }
     }
     

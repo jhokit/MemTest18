@@ -67,7 +67,7 @@ struct FolderView: View {
 
             })
             {
-                Text("Add 40 Items")
+                Text("Add 40 Pix")
             }
         }
     }
