@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		725F41632C652EA400711F92 /* ItemImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 725F41622C652EA400711F92 /* ItemImage.swift */; };
 		7272E7EE2C55A7E300707C3A /* MemTest18App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7272E7ED2C55A7E300707C3A /* MemTest18App.swift */; };
 		7272E7F02C55A7E300707C3A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7272E7EF2C55A7E300707C3A /* ContentView.swift */; };
 		7272E7F22C55A7E300707C3A /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7272E7F12C55A7E300707C3A /* Item.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		725F41622C652EA400711F92 /* ItemImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemImage.swift; sourceTree = "<group>"; };
 		7272E7EA2C55A7E300707C3A /* MemTest18.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemTest18.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7272E7ED2C55A7E300707C3A /* MemTest18App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemTest18App.swift; sourceTree = "<group>"; };
 		7272E7EF2C55A7E300707C3A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; wrapsLines = 0; };
@@ -68,6 +70,7 @@
 				7272E7ED2C55A7E300707C3A /* MemTest18App.swift */,
 				7272E7EF2C55A7E300707C3A /* ContentView.swift */,
 				7272E7F12C55A7E300707C3A /* Item.swift */,
+				725F41622C652EA400711F92 /* ItemImage.swift */,
 				7272E7FF2C55B71300707C3A /* Folder.swift */,
 				7272E8012C55BA0E00707C3A /* FolderView.swift */,
 				7272E8032C55BA1A00707C3A /* ItemListView.swift */,
@@ -160,6 +163,7 @@
 				7272E8042C55BA1A00707C3A /* ItemListView.swift in Sources */,
 				7272E8062C55BA2600707C3A /* ItemDetailView.swift in Sources */,
 				7272E7F02C55A7E300707C3A /* ContentView.swift in Sources */,
+				725F41632C652EA400711F92 /* ItemImage.swift in Sources */,
 				7272E7F22C55A7E300707C3A /* Item.swift in Sources */,
 				7272E7EE2C55A7E300707C3A /* MemTest18App.swift in Sources */,
 				7272E8002C55B71300707C3A /* Folder.swift in Sources */,

@@ -13,13 +13,18 @@ import UIKit
 final class Item {
     var uuid:String = UUID().uuidString // handy uuID
     var timestamp: Date?
-    @Attribute(.externalStorage) var image:Data?   // jpeg image data
-    @Attribute(.externalStorage) var thumbnail:Data? // jpeg thumbnail data
+    @Relationship(deleteRule:.cascade) var image:ItemImage?   // jpeg image data
+    @Relationship(deleteRule:.cascade) var thumbnail:ItemImage?   // jpeg thumbnail data
     var folder:Folder?  // the Folder that this record belongs to
 
     init(timestamp: Date, image: UIImage) {
         self.timestamp = timestamp
-        self.image = image.jpegData(compressionQuality: 1.0)
-        self.thumbnail = image.preparingThumbnail(of: CGSize(width: 500, height: 500))?.jpegData(compressionQuality: 1.0)
+        
+        let imageData = image.jpegData(compressionQuality: 1.0)!
+        self.image = ItemImage(imageData: imageData)
+        
+        let thumbnailData = image.preparingThumbnail(of: CGSize(width: 500, height: 500))!.jpegData(compressionQuality: 1.0)!
+        
+        self.thumbnail = ItemImage(imageData:thumbnailData)
     }
 }

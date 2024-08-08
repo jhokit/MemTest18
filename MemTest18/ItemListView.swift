@@ -19,14 +19,14 @@ struct ItemListView: View {
                     ForEach(items) { item in
                         NavigationLink {
                             VStack{
-                                Image(uiImage: UIImage(data:item.image!)!)
+                                Image(uiImage: UIImage(data:item.image!.imageData!)!)
                                     .resizable()
                                     .scaledToFit()
                                 Text("Item at \(item.timestamp!, format: Date.FormatStyle(date: .numeric, time: .standard))")
                             }
                         } label: {
                             HStack{
-                                Image(uiImage: UIImage(data:item.thumbnail!)!)
+                                Image(uiImage: UIImage(data:item.thumbnail!.imageData!)!)
                                     .resizable()
                                     .frame(width: 100, height: 100)
                                 Text("Item at \(item.timestamp!, format: Date.FormatStyle(date: .numeric, time: .standard))")
