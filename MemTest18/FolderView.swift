@@ -10,16 +10,17 @@ import SwiftData
 
 struct FolderView: View {
     
-    @Query private var items: [Item]
     @Query(sort: \Folder.name) private var folders: [Folder]
     @Binding var selection:Folder?
     @State private var isShowingNewFolderAlert = false
     @State private var newFolderName = ""
     
+    let descriptor = FetchDescriptor<Item>() // fetch all items
+
     @Environment(\.modelContext) private var modelContext
 
     var body: some View {
-        Text("\(items.count) total items")
+        Text("\((try? modelContext.fetchCount(descriptor)) ?? 0) total items")
         List(selection:$selection){
             ForEach(folders, id:\.self) { folder in
                 HStack{
