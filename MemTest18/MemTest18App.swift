@@ -10,6 +10,7 @@ import SwiftData
 
 @main
 struct MemTest18App: App {
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
@@ -23,9 +24,12 @@ struct MemTest18App: App {
         }
     }()
 
+    let manager = CoreDataManager()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(\.managedObjectContext, manager.container.viewContext)
         }
         .modelContainer(sharedModelContainer)
     }

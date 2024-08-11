@@ -20,7 +20,5 @@ import SwiftUI
     init(name:String) {
         self.name = name
     }
-
-
 }
 

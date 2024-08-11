@@ -10,20 +10,22 @@ import SwiftData
 
 struct FolderView: View {
     
-    @Query private var items: [Item]
-    @Query(sort: \Folder.name) private var folders: [Folder]
+ //   @Query(sort: \Folder.name) private var folders: [Folder]
     @Binding var selection:Folder?
     @State private var isShowingNewFolderAlert = false
     @State private var newFolderName = ""
     
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.uuid)]) var cdItems: FetchedResults<CoreItem>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.name)]) var cdFolder: FetchedResults<CoreFolder>
+
     @Environment(\.modelContext) private var modelContext
 
     var body: some View {
-        Text("\(items.count) total items")
+        Text("\(cdItems.count) total items")
         List(selection:$selection){
-            ForEach(folders, id:\.self) { folder in
+            ForEach(cdFolder, id:\.self) { folder in
                 HStack{
-                    Label(folder.name,systemImage:"folder")
+                    Label(folder.name ?? "unknown",systemImage:"folder")
                     Spacer()
                     Text("\(folder.items?.count ?? 0)").foregroundColor(.secondary).monospacedDigit()
                 }
