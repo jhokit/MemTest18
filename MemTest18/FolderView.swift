@@ -11,11 +11,11 @@ import SwiftData
 struct FolderView: View {
     
  //   @Query(sort: \Folder.name) private var folders: [Folder]
-    @Binding var selection:Folder?
+    @Binding var selection:CoreFolder?
     @State private var isShowingNewFolderAlert = false
     @State private var newFolderName = ""
     
-    @FetchRequest(sortDescriptors: [SortDescriptor(\.uuid)]) var cdItems: FetchedResults<CoreItem>
+    @FetchRequest(sortDescriptors: []) var cdItems: FetchedResults<CoreItem> // just to get the count
     @FetchRequest(sortDescriptors: [SortDescriptor(\.name)]) var cdFolder: FetchedResults<CoreFolder>
 
     @Environment(\.modelContext) private var modelContext

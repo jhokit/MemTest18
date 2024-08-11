@@ -11,13 +11,15 @@ import SwiftData
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
-    @State private var selection:Folder?
+    @State private var selection:CoreFolder?
 
     var body: some View {
         NavigationSplitView {
             FolderView(selection: $selection)
         } detail: {
-            ItemListView(folder:selection)
+            if let selection{
+                ItemListView(folder:selection)
+            }
         }
     }
 

@@ -6,16 +6,20 @@
 //
 
 import SwiftUI
-import SwiftData
 
 struct ItemListView: View {
-    @Environment(\.modelContext) private var modelContext
-    var folder:Folder?
+    var folder:CoreFolder?
+    @FetchRequest private var items: FetchedResults<CoreItem>
 
+    init(folder: CoreFolder){
+        self.folder = folder
+        self._items = FetchRequest<CoreItem>(sortDescriptors: [], 
+                                             predicate: NSPredicate(format: "folder.uuid = %@", folder.uuid ?? ""))
+
+    }
     var body: some View {
         NavigationStack{
             List {
-                if let items = folder?.items{
                     ForEach(items) { item in
                         NavigationLink {
                             VStack{
@@ -34,7 +38,6 @@ struct ItemListView: View {
                         }
                     }
                     .onDelete(perform: deleteItems)
-                }
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -51,21 +54,21 @@ struct ItemListView: View {
     }
     
     private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date(), image:UIImage(named: "image\(Int.random(in: 1...3))")!)
-            modelContext.insert(newItem)
-            folder?.items?.append(newItem)
-        }
+//        withAnimation {
+//            let newItem = Item(timestamp: Date(), image:UIImage(named: "image\(Int.random(in: 1...3))")!)
+//            modelContext.insert(newItem)
+//            folder?.items?.append(newItem)
+//        }
     }
     
     private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                if let items = folder?.items{
-                    modelContext.delete(items[index])
-                }
-            }
-        }
+//        withAnimation {
+//            for index in offsets {
+//                if let items = folder?.items{
+//                    modelContext.delete(items[index])
+//                }
+//            }
+//        }
     }
 }
 
