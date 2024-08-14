@@ -14,21 +14,23 @@ struct FolderView: View {
     @State private var newFolderName = ""
     
     @FetchRequest(sortDescriptors: []) var cdItems: FetchedResults<CoreItem> // just to get the count
-    @FetchRequest(sortDescriptors: [SortDescriptor(\.name)]) var cdFolder: FetchedResults<CoreFolder>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.name)]) var cdFolders: FetchedResults<CoreFolder>
 
-//    @Environment(\.modelContext) private var modelContext
     @Environment(\.managedObjectContext) private var viewContext
 
     var body: some View {
         Text("\(cdItems.count) total items")
         List(selection:$selection){
-            ForEach(cdFolder, id:\.self) { folder in
+            ForEach(cdFolders, id:\.self) { folder in
                 HStack{
                     Label(folder.name ?? "unknown",systemImage:"folder")
                     Spacer()
                     Text("\(folder.items?.count ?? 0)").foregroundColor(.secondary).monospacedDigit()
                 }
             }
+            .onDelete(perform: { offsets in
+                viewContext.delete(cdFolders[offsets.first ?? 0])
+            })
         }
         .navigationTitle("Folders")
         .toolbar {
