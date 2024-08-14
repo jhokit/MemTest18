@@ -2,7 +2,7 @@
 //  CoreItem+CoreDataProperties.swift
 //  MemTest18
 //
-//  Created by Jeff Hokit on 8/11/24.
+//  Created by Jeff Hokit on 8/14/24.
 //
 //
 
@@ -16,11 +16,11 @@ extension CoreItem {
         return NSFetchRequest<CoreItem>(entityName: "Item")
     }
 
-    @NSManaged public var uuid: String?
     @NSManaged public var timestamp: Date?
-    @NSManaged public var image: Data?
-    @NSManaged public var thumbnail: Data?
+    @NSManaged public var uuid: String?
     @NSManaged public var folder: CoreFolder?
+    @NSManaged public var image: MyImage?
+    @NSManaged public var thumbnail: MyThumbnail?
 
 }
 

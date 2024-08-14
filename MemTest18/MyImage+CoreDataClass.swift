@@ -1,5 +1,5 @@
 //
-//  CoreItem+CoreDataClass.swift
+//  MyImage+CoreDataClass.swift
 //  MemTest18
 //
 //  Created by Jeff Hokit on 8/14/24.
@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-@objc(CoreItem)
-public class CoreItem: NSManagedObject {
+@objc(MyImage)
+public class MyImage: NSManagedObject {
 
 }

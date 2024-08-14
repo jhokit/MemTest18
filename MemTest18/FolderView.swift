@@ -68,13 +68,28 @@ struct FolderView: View {
                 {
                    let newFolder = createFolder(named:"Test\(Int.random(in: 1...1000))")
                    for _ in 1...20 {
+                       
+                       // Create the Item
                        let newItem = CoreItem(context:viewContext)
                        newItem.uuid = UUID().uuidString
-                       newItem.timestamp = Date()
-                       let image = UIImage(named: "image\(Int.random(in: 1...3))")!
-                       newItem.image = image.jpegData(compressionQuality: 1.0)
-                       newItem.thumbnail = image.preparingThumbnail(of: CGSize(width: 500, height: 500))?.jpegData(compressionQuality: 1.0)
+                       newItem.timestamp = Date()                       
                        newItem.folder = newFolder
+                       
+                       // Create the Image
+                       let image = UIImage(named: "image\(Int.random(in: 1...3))")!
+                       
+                       // Create the MyImage
+                       let newMyImage = MyImage(context:viewContext)
+                       newMyImage.imageData = image.jpegData(compressionQuality: 1.0)
+                       newItem.image = newMyImage
+                       newMyImage.item = newItem
+
+                       // Create the MyThumbnail
+                       let newMyThumbnail = MyThumbnail(context:viewContext)
+                       newMyThumbnail.imageData = image.preparingThumbnail(of: CGSize(width: 500, height: 500))?.jpegData(compressionQuality: 1.0)
+                       newItem.thumbnail = newMyThumbnail
+                       newMyThumbnail.item = newItem
+
                        newFolder.addToItems(newItem)
                        do {
                            try viewContext.save()
