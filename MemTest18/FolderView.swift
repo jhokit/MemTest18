@@ -65,6 +65,7 @@ struct FolderView: View {
                        let image = UIImage(named: "image\(Int.random(in: 1...3))")!
                        newItem.image = image.jpegData(compressionQuality: 1.0)
                        newItem.thumbnail = image.preparingThumbnail(of: CGSize(width: 500, height: 500))?.jpegData(compressionQuality: 1.0)
+                       newItem.folder = newFolder
                        newFolder.addToItems(newItem)
                    }
                 }
