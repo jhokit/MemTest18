@@ -40,7 +40,13 @@ struct FolderView: View {
     
    func createFolder(named:String)->CoreFolder {
        let folder = CoreFolder(context: viewContext)
+       folder.uuid = UUID().uuidString
        folder.name = named
+       do {
+           try viewContext.save()
+       } catch {
+           print("Error saving folder")
+       }
        return folder
     }
     
@@ -61,12 +67,19 @@ struct FolderView: View {
                    let newFolder = createFolder(named:"Test\(Int.random(in: 1...1000))")
                    for _ in 1...20 {
                        let newItem = CoreItem(context:viewContext)
+                       newItem.uuid = UUID().uuidString
                        newItem.timestamp = Date()
                        let image = UIImage(named: "image\(Int.random(in: 1...3))")!
                        newItem.image = image.jpegData(compressionQuality: 1.0)
                        newItem.thumbnail = image.preparingThumbnail(of: CGSize(width: 500, height: 500))?.jpegData(compressionQuality: 1.0)
                        newItem.folder = newFolder
                        newFolder.addToItems(newItem)
+                       do {
+                           try viewContext.save()
+                       } catch {
+                           print("Error saving item")
+                       }
+
                    }
                 }
 
