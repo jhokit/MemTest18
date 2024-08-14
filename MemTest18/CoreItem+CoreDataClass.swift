@@ -12,4 +12,5 @@ import CoreData
 @objc(CoreItem)
 public class CoreItem: NSManagedObject {
 
+    
 }

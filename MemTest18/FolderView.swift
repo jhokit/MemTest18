@@ -6,11 +6,9 @@
 //
 
 import SwiftUI
-import SwiftData
 
 struct FolderView: View {
     
- //   @Query(sort: \Folder.name) private var folders: [Folder]
     @Binding var selection:CoreFolder?
     @State private var isShowingNewFolderAlert = false
     @State private var newFolderName = ""
@@ -18,7 +16,8 @@ struct FolderView: View {
     @FetchRequest(sortDescriptors: []) var cdItems: FetchedResults<CoreItem> // just to get the count
     @FetchRequest(sortDescriptors: [SortDescriptor(\.name)]) var cdFolder: FetchedResults<CoreFolder>
 
-    @Environment(\.modelContext) private var modelContext
+//    @Environment(\.modelContext) private var modelContext
+    @Environment(\.managedObjectContext) private var viewContext
 
     var body: some View {
         Text("\(cdItems.count) total items")
@@ -39,10 +38,10 @@ struct FolderView: View {
     }
     
     
-   func createFolder(named:String)->Folder {
-        let folder = Folder(name: named)
-        modelContext.insert(folder)
-        return folder
+   func createFolder(named:String)->CoreFolder {
+       let folder = CoreFolder(context: viewContext)
+       folder.name = named
+       return folder
     }
     
     
@@ -61,9 +60,12 @@ struct FolderView: View {
                 {
                    let newFolder = createFolder(named:"Test\(Int.random(in: 1...1000))")
                    for _ in 1...20 {
-                       let newItem = Item(timestamp: Date(), image:UIImage(named: "image\(Int.random(in: 1...3))")!)
-                       modelContext.insert(newItem)
-                       newFolder.items?.append(newItem)
+                       let newItem = CoreItem(context:viewContext)
+                       newItem.timestamp = Date()
+                       let image = UIImage(named: "image\(Int.random(in: 1...3))")!
+                       newItem.image = image.jpegData(compressionQuality: 1.0)
+                       newItem.thumbnail = image.preparingThumbnail(of: CGSize(width: 500, height: 500))?.jpegData(compressionQuality: 1.0)
+                       newFolder.addToItems(newItem)
                    }
                 }
 

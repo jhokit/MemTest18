@@ -8,7 +8,7 @@
 
 import Foundation
 import CoreData
-
+import UIKit
 
 extension CoreFolder {
 
@@ -19,7 +19,6 @@ extension CoreFolder {
     @NSManaged public var uuid: String?
     @NSManaged public var name: String?
     @NSManaged public var items: NSSet?
-
 }
 
 // MARK: Generated accessors for items

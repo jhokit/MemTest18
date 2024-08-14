@@ -6,24 +6,10 @@
 //
 
 import SwiftUI
-import SwiftData
 
 @main
 struct MemTest18App: App {
     
-    var sharedModelContainer: ModelContainer = {
-        let schema = Schema([
-            Item.self,
-        ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
-        do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
-        } catch {
-            fatalError("Could not create ModelContainer: \(error)")
-        }
-    }()
-
     let manager = CoreDataManager()
 
     var body: some Scene {
@@ -31,6 +17,5 @@ struct MemTest18App: App {
             ContentView()
                 .environment(\.managedObjectContext, manager.container.viewContext)
         }
-        .modelContainer(sharedModelContainer)
     }
 }

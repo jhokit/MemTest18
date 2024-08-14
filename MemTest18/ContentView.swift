@@ -6,11 +6,8 @@
 //
 
 import SwiftUI
-import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
     @State private var selection:CoreFolder?
 
     var body: some View {
@@ -24,9 +21,4 @@ struct ContentView: View {
     }
 
 
-}
-
-#Preview {
-    ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
 }
