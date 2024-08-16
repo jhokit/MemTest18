@@ -10,10 +10,11 @@ import SwiftUI
 struct ItemListView: View {
     var folder:CoreFolder?
     @FetchRequest private var items: FetchedResults<CoreItem>
+    @Environment(\.managedObjectContext) private var viewContext
 
     init(folder: CoreFolder){
         self.folder = folder
-        self._items = FetchRequest<CoreItem>(sortDescriptors: [], 
+        self._items = FetchRequest<CoreItem>(sortDescriptors: [SortDescriptor(\.timestamp, order: .reverse)], 
                                              predicate: NSPredicate(format: "folder.uuid = %@", folder.uuid ?? ""))
 
     }
@@ -54,21 +55,35 @@ struct ItemListView: View {
     }
     
     private func addItem() {
-//        withAnimation {
-//            let newItem = Item(timestamp: Date(), image:UIImage(named: "image\(Int.random(in: 1...3))")!)
-//            modelContext.insert(newItem)
-//            folder?.items?.append(newItem)
-//        }
+        withAnimation {
+            let newItem = CoreItem(context:viewContext)
+            newItem.uuid = UUID().uuidString
+            newItem.timestamp = Date()
+            let image = UIImage(named: "image\(Int.random(in: 1...3))")!
+            newItem.image = image.jpegData(compressionQuality: 1.0)
+            newItem.thumbnail = image.preparingThumbnail(of: CGSize(width: 500, height: 500))?.jpegData(compressionQuality: 1.0)
+            newItem.folder = folder
+            folder?.addToItems(newItem)
+            do {
+                try viewContext.save()
+            } catch {
+                print("Error saving item")
+            }
+        }
     }
     
     private func deleteItems(offsets: IndexSet) {
-//        withAnimation {
-//            for index in offsets {
-//                if let items = folder?.items{
-//                    modelContext.delete(items[index])
-//                }
-//            }
-//        }
+        withAnimation {
+            for index in offsets {
+                let item = items[index]
+                viewContext.delete(item)
+            }
+        }
+        do {
+            try viewContext.save()
+        } catch {
+            print("Error saving folder")
+        }
     }
 }
 
